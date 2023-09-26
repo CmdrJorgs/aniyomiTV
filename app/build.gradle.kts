@@ -4,11 +4,13 @@ import org.jmailen.gradle.kotlinter.tasks.LintTask
 
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
     id("com.mikepenz.aboutlibraries.plugin")
     kotlin("android")
     kotlin("plugin.serialization")
     id("com.github.zellius.shortcut-helper")
     id("com.squareup.sqldelight")
+    id("com.google.gms.google-services") version "4.3.15" apply false
 }
 
 if (gradle.startParameter.taskRequests.toString().contains("Standard")) {
@@ -26,7 +28,7 @@ android {
     ndkVersion = AndroidConfig.ndk
 
     defaultConfig {
-        applicationId = "xyz.jmir.tachiyomi.mi"
+        applicationId = "xyz.cmdrjorgs.aniyomitv.mi"
         minSdk = AndroidConfig.minSdk
         targetSdk = AndroidConfig.targetSdk
         versionCode = 94
@@ -284,6 +286,7 @@ dependencies {
     implementation(libs.acra.http)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 
     // Add the dependencies for the Crashlytics and Analytics libraries
     // When using the BoM, you don't specify versions in Firebase library dependencies
